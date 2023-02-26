@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: test-erpnext
+  
+  
+ 
+ 
+ 
+ apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: erpnext-deploy
+  labels:
+    app: nginx
+  nameSpace: test-erpnext
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: erpnext
+  template:
+    metadata:
+      labels:
+        app: erpnext
+    spec:
+      containers:
+      - name: erpnext
+        image: lukptr/erpnext7 
+        ports:
+        - containerPort: 80
+  
+ 
